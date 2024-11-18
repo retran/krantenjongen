@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>KrantenJongen</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CodeHollow.FeedReader" Version="*" />
+    <PackageReference Include="Google.Cloud.SecretManager.V1" Version="2.5.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="*" />
+    <PackageReference Include="Google.Cloud.AIPlatform.V1" Version="3.10.0" />
+    <PackageReference Include="Google.Cloud.Functions.Hosting" Version="*" />
+    <PackageReference Include="Google.Cloud.Logging.V2" Version="*" />
+    <PackageReference Include="Google.Cloud.BigQuery.V2" Version="*" />
+    <PackageReference Include="Google.Events.Protobuf" Version="*" />
+    <PackageReference Include="Google.Cloud.Tasks.V2" Version="*" />
+    <PackageReference Include="Google.Api.Gax.Grpc" Version="*" />
+    <PackageReference Include="Telegram.Bot" Version="*" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../prompts/build-summary-system.prompt">
+        <LogicalName>KrantenJongen.Prompts.build-summary-system.prompt</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../../prompts/build-summary-request.prompt">
+        <LogicalName>KrantenJongen.Prompts.build-summary-request.prompt</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../../prompts/build-summary.json">
+        <LogicalName>KrantenJongen.Prompts.build-summary.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

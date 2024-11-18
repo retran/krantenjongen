@@ -1,0 +1,345 @@
+{
+  "type": "object",
+  "properties": {
+    "01_dutch_to_english_translation": {
+      "type": "string",
+      "description": "Full English translation. Use standard capitalization and do not include any headlines or titles."
+    },
+    "02_english_summary": {
+      "type": "string",
+      "description": "Concise English summary (150-200 words) in paragraph form. Do not include headlines or use all caps; follow standard capitalization rules."
+    },
+    "03_rewritten_english_summary": {
+      "type": "string",
+      "description": "Summary rewritten to meet professional journalistic standards, maintaining standard capitalization and excluding any headlines."
+    },
+    "04_russian_translation": {
+      "type": "string",
+      "description": "Russian translation of the rewritten English summary, using standard capitalization and no headlines."
+    },
+    "05_rewritten_russian_translation": {
+      "type": "string",
+      "description": "Russian translation rewritten to journalistic standards, ensuring standard capitalization and the exclusion of headlines."
+    },
+    "06_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of relevant one-word tags."
+    },
+    "07_good_vibe_assessment": {
+      "type": "object",
+      "properties": {
+        "01_positive_impact": {
+          "type": "object",
+          "properties": {
+            "uplifting_and_inspiring": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "promotes_good_vibes": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "avoids_negative_content": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            }
+          },
+          "required": [
+            "uplifting_and_inspiring",
+            "promotes_good_vibes",
+            "avoids_negative_content"
+          ]
+        },
+        "02_relevance_and_value": {
+          "type": "object",
+          "properties": {
+            "fits_good_vibe_categories": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "provides_practical_value": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "relevant_to_expat_life": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            }
+          },
+          "required": [
+            "fits_good_vibe_categories",
+            "provides_practical_value",
+            "relevant_to_expat_life"
+          ]
+        },
+        "03_engagement_potential": {
+          "type": "object",
+          "properties": {
+            "encourages_community_spirit": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "inspires_and_motivates": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "contains_actionable_information": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            }
+          },
+          "required": [
+            "encourages_community_spirit",
+            "inspires_and_motivates",
+            "contains_actionable_information"
+          ]
+        },
+        "04_final_verdict": {
+          "type": "object",
+          "properties": {
+            "01_publish_in_good_vibe_news_space": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "02_confidence_level": {
+              "type": "string",
+              "enum": [
+                "High",
+                "Medium",
+                "Low"
+              ]
+            },
+            "03_explanation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "01_publish_in_good_vibe_news_space",
+            "02_confidence_level",
+            "03_explanation"
+          ]
+        }
+      },
+      "required": [
+        "01_positive_impact",
+        "02_relevance_and_value",
+        "03_engagement_potential",
+        "04_final_verdict"
+      ],
+      "description": "Evaluation of content suitability for the good vibe news space."
+    },
+    "08_publish_in_good_vibe_news_space": {
+      "type": "boolean",
+      "description": "`true` or `false` indicating the final verdict for the good vibe news space."
+    },
+    "09_news_highlights_assessment": {
+      "type": "object",
+      "properties": {
+        "01_impact_assessment": {
+          "type": "object",
+          "properties": {
+            "significance": {
+              "type": "string",
+              "enum": [
+                "High",
+                "Medium",
+                "Low"
+              ]
+            },
+            "population_affected": {
+              "type": "string",
+              "enum": [
+                "National",
+                "Local",
+                "International"
+              ]
+            },
+            "international_relations": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "economic_impact": {
+              "type": "string",
+              "enum": [
+                "High",
+                "Medium",
+                "Low"
+              ]
+            }
+          },
+          "required": [
+            "significance",
+            "population_affected",
+            "international_relations",
+            "economic_impact"
+          ]
+        },
+        "02_relevance_to_expats": {
+          "type": "object",
+          "properties": {
+            "direct_impact_on_expats": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "policy_and_regulation_changes": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "cultural_significance": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            }
+          },
+          "required": [
+            "direct_impact_on_expats",
+            "policy_and_regulation_changes",
+            "cultural_significance"
+          ]
+        },
+        "03_urgency_and_timeliness": {
+          "type": "object",
+          "properties": {
+            "time_sensitive": {
+              "type": "string",
+              "enum": [
+                "High",
+                "Medium",
+                "Low"
+              ]
+            },
+            "critical_updates": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            }
+          },
+          "required": [
+            "time_sensitive",
+            "critical_updates"
+          ]
+        },
+        "04_credibility_and_reliability": {
+          "type": "object",
+          "properties": {
+            "source_verification": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "evidence_based": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            }
+          },
+          "required": [
+            "source_verification",
+            "evidence_based"
+          ]
+        },
+        "05_final_verdict": {
+          "type": "object",
+          "properties": {
+            "01_publish_in_news_highlights_channel": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            },
+            "02_confidence_level": {
+              "type": "string",
+              "enum": [
+                "High",
+                "Medium",
+                "Low"
+              ]
+            },
+            "03_explanation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "01_publish_in_news_highlights_channel",
+            "02_confidence_level",
+            "03_explanation"
+          ]
+        }
+      },
+      "required": [
+        "01_impact_assessment",
+        "02_relevance_to_expats",
+        "03_urgency_and_timeliness",
+        "04_credibility_and_reliability",
+        "05_final_verdict"
+      ],
+      "description": "Evaluation of the news' importance for the news highlights channel."
+    },
+    "10_publish_in_news_highlights_channel": {
+      "type": "boolean",
+      "description": "`true` or `false` indicating the final verdict for the news highlights channel."
+    }
+  },
+  "required": [
+    "01_dutch_to_english_translation",
+    "02_english_summary",
+    "03_rewritten_english_summary",
+    "04_russian_translation",
+    "05_rewritten_russian_translation",
+    "06_tags",
+    "07_good_vibe_assessment",
+    "08_publish_in_good_vibe_news_space",
+    "09_news_highlights_assessment",
+    "10_publish_in_news_highlights_channel"
+  ]
+}
