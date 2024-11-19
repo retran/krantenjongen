@@ -137,10 +137,10 @@ create_queues() {
         if [ "$DRY_RUN" = false ]; then
             gcloud tasks queues create "$QUEUE" --location="$REGION" \
                 --max-concurrent-dispatches=1 \
-                --max-dispatches-per-second=0.16 \
+                --max-dispatches-per-second=0.1 \
                 --max-burst-size=10 \
                 --retry-config-max-attempts=100 \
-                --retry-config-min-backoff=0.100s \
+                --retry-config-min-backoff=60s \
                 --retry-config-max-backoff=3600s \
                 --retry-config-max-doublings=16
             check_error "Failed to create queue: $QUEUE"
