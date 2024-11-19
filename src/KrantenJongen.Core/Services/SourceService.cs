@@ -19,11 +19,15 @@ public sealed class SourceService
 {
     private readonly TimeZoneInfo _timeZone = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time"); // Consider changing to Central European Time if needed
     private readonly ILogger<SourceService> _logger;
-    private readonly HttpClient _httpClient = new HttpClient();
+    private readonly HttpClient _httpClient;
 
     public SourceService(ILogger<SourceService> logger)
     {
         _logger = logger;
+
+        _httpClient = new HttpClient();
+        _httpClient.DefaultRequestHeaders.Add("User-Agent", "KrantenJongen/1.0");
+        _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html,application/rss+xml,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
     }
 
     public async IAsyncEnumerable<Article> FetchArticles(DateTime after, DateTime before,
@@ -85,7 +89,21 @@ public sealed class SourceService
     {
         _logger.LogInformation("Fetching articles from source URL: {Url}", source.Url);
         int count = 0;
-        var feed = await FeedReader.ReadAsync(source.Url, cancellationToken).ConfigureAwait(false);
+
+        var getUrlResponse = await _httpClient.GetAsync(
+            source.Url, 
+            HttpCompletionOption.ResponseHeadersRead,
+            cancellationToken);
+        getUrlResponse.EnsureSuccessStatusCode();
+        var realUrl = getUrlResponse.RequestMessage.RequestUri.ToString();
+
+        var feedResponse = await _httpClient.GetAsync(
+            realUrl, 
+            HttpCompletionOption.ResponseContentRead,
+            cancellationToken);
+        var content = await feedResponse.Content.ReadAsStringAsync();
+        var feed = FeedReader.ReadFromString(content);
+
         foreach (var item in feed.Items)
         {
             var article = BuildArticle(item, source);

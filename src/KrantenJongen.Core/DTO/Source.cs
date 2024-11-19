@@ -16,10 +16,11 @@ public record Source(string Name, string Url, string Selector)
         new("RTL Nieuws", "https://www.rtlnieuws.nl/rss.xml", "//*[@id=\"app\"]/div/main"),
         new("IamExpat.nl", "https://www.iamexpat.nl/rss/news-netherlands", "//*[@id=\"block-system-main\"]/div/div/article/div[2]"),
         new("Новости Нидерландов", "https://www.novostiniderlandov.com/feed/", "//*[@id=\"primary\"]/div/div/div/main/article"),
-        new("NU.nl", "https://www.nu.nl/rss", "//*[@id=\"main\"]/article"),
+        new("NU.nl", "https://www.nu.nl/rss", "//*[@id=\"main\"]/article"), // ?
         new("Nederlands Dagblad", "https://www.nd.nl/rss/nieuws", "//article[1]"),
-        new("Het Financieele Dagblad", "https://fd.nl/?rss", string.Empty),
-        new("GeenStijl", "https://www.geenstijl.nl/feeds/recent.atom", "//main[1]"),
+        new("Het Financieele Dagblad", "https://fd.nl/?rss", string.Empty), // ?
+        new("GeenStijl", "https://www.geenstijl.nl/feeds/recent.atom", "//main[1]"), // ?
+        new("Reformatorisch Dagblad", "https://www.rd.nl/rss-feed?name=laatste-nieuws", "//*[@id=\"content\"]"),
 
         new("BRIGHT.nl", "https://www.bright.nl/rss/index.xml", "//article[1]"),
 
@@ -189,7 +190,5 @@ public record Source(string Name, string Url, string Selector)
         new("NRC", "https://www.nrc.nl/index/podcast/rss/", "//*[@id=\"main-content\"]/article"),
         new("NRC", "https://www.nrc.nl/index/archief/rss/", "//*[@id=\"main-content\"]/article"),
         new("NRC", "https://www.nrc.nl/index/magazine/rss/", "//*[@id=\"main-content\"]/article"),
-
-//        new("Reformatorisch Dagblad", "https://www.rd.nl/rss-feed?name=laatste-nieuws", ".article-body"),
     };
 }

@@ -97,26 +97,34 @@ namespace KrantenJongen.Services
 
         private async Task PostToChannel(string channelId, string message, string imageUrl, CancellationToken cancellationToken)
         {
-            if (!string.IsNullOrEmpty(imageUrl))
-            {
-                var inputFile = new InputFileUrl(imageUrl);
-                await _telegramBotClient.SendPhoto(
-                    chatId: channelId,
-                    photo: inputFile,
-                    caption: message,
-                    parseMode: ParseMode.Html,
-                    cancellationToken: cancellationToken
-                );
-            }
-            else
-            {
-                await _telegramBotClient.SendMessage(
-                    chatId: channelId,
-                    text: message,
-                    parseMode: ParseMode.Html,
-                    cancellationToken: cancellationToken
-                );
-            }
+            await _telegramBotClient.SendMessage(
+                chatId: channelId,
+                text: message,
+                parseMode: ParseMode.Html,
+                cancellationToken: cancellationToken
+            );
+
+            // DO NOT working as expected because of limitations of the image header length
+            // if (!string.IsNullOrEmpty(imageUrl))
+            // {
+            //     var inputFile = new InputFileUrl(imageUrl);
+            //     await _telegramBotClient.SendPhoto(
+            //         chatId: channelId,
+            //         photo: inputFile,
+            //         caption: message,
+            //         parseMode: ParseMode.Html,
+            //         cancellationToken: cancellationToken
+            //     );
+            // }
+            // else
+            // {
+            //     await _telegramBotClient.SendMessage(
+            //         chatId: channelId,
+            //         text: message,
+            //         parseMode: ParseMode.Html,
+            //         cancellationToken: cancellationToken
+            //     );
+            // }
         }
     }
 }
