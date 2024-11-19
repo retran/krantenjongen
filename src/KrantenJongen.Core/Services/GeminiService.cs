@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Google.Api.Gax.Grpc;
 using Google.Cloud.AIPlatform.V1;
 using KrantenJongen.DTO;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Value = Google.Protobuf.WellKnownTypes.Value;
 
 namespace KrantenJongen.Services;
@@ -69,7 +71,7 @@ public class GeminiService
     public async Task<T> Generate<T>(string systemPrompt, string request, CancellationToken cancellationToken = default) where T : class
     {
         _logger.LogInformation($"Generating content in Generate for request: {request}");
-
+        string resultPayload = string.Empty;
         try
         {
             var predictionServiceClient = new PredictionServiceClientBuilder
@@ -113,8 +115,24 @@ public class GeminiService
                 throw new InvalidOperationException("Invalid response structure.");
             }
 
-            _logger.LogInformation($"Generated content: {candidate.Content.Parts[0].Text}");
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(candidate.Content.Parts[0].Text);
+            resultPayload = candidate.Content.Parts[0].Text;
+            _logger.LogInformation($"Generated content: {resultPayload}");
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(resultPayload);
+        }
+        catch (Grpc.Core.RpcException ex)
+        {
+            _logger.LogError(ex, $"Request is failed: {ex.Status.Detail}");
+            throw;
+        }
+        catch (JsonReaderException ex)
+        {
+            _logger.LogError(ex, $"Error deserializing response: {resultPayload}");
+            throw;
+        }
+        catch (JsonSerializationException ex)
+        {
+            _logger.LogError(ex, $"Error deserializing response: {resultPayload}");
+            throw;
         }
         catch (Exception ex)
         {
