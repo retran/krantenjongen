@@ -68,7 +68,7 @@ public class GeminiService
         }
     }
 
-    public async Task<T> Generate<T>(string systemPrompt, string request, CancellationToken cancellationToken = default) where T : class
+    public async Task<T> Generate<T>(string systemPrompt, string request, OpenApiSchema schema = null, CancellationToken cancellationToken = default) where T : class
     {
         _logger.LogInformation($"Generating content in Generate for request: {request}");
         string resultPayload = string.Empty;
@@ -83,6 +83,7 @@ public class GeminiService
             {
                 GenerationConfig = new GenerationConfig()
                 {
+                    ResponseSchema = schema,
                     ResponseMimeType = "application/json"
                 },
                 SystemInstruction = new Content

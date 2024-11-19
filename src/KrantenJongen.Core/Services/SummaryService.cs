@@ -28,6 +28,7 @@ public class SummaryService
         var buildSummaryResponse = await _geminiService.Generate<BuildSummaryResponse>(
             _promptService.GetBuildSummarySystemPrompt(),
             _promptService.GetBuildSummaryRequestPrompt(article),
+            _promptService.GetBuildSummarySchemaForGoogleApi(),
             cancellationToken);
 
         _logger.LogInformation("Built English summary: {EnglishSummary}", buildSummaryResponse.English);
