@@ -276,9 +276,9 @@ public class PromptService
                         Description = "Evaluation of content suitability for the good vibe news space."
                     }
                 },
-                // 08_publish_in_good_vibe_news_space
+                // 08_publish_in_good_vibe_news_channel
                 {
-                    "08_publish_in_good_vibe_news_space",
+                    "08_publish_in_good_vibe_news_channel",
                     new OpenApiSchema
                     {
                         Type = Type.Boolean,
@@ -317,7 +317,7 @@ public class PromptService
                 "05_rewritten_russian_translation",
                 "06_tags",
                 "07_good_vibe_assessment",
-                "08_publish_in_good_vibe_news_space",
+                "08_publish_in_good_vibe_news_channel",
                 "09_news_highlights_assessment",
                 "10_publish_in_news_highlights_channel"
             }
