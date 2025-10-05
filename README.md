@@ -1,6 +1,6 @@
 # KrantenJongen
 
-KrantenJongen is a tool designed to gather, summarize, and share news. It fetches articles from RSS feeds (currently defined in Source.cs), translate them, generates concise summaries using Google Gemini LLMs, and publishes them to Telegram channels (currently defined in TelegramService.cs), all powered by Google Cloud.
+**KrantenJongen** is a tool designed (and over-engineered for learning purposes) to gather, summarize, and share news. Powered by Google Cloud, it fetches articles from RSS feeds (defined in Source.cs), translates them, generates concise summaries using Google's Gemini models, and publishes them to Telegram channels (defined in TelegramService.cs).
 
 ## Steps to Deploy
 
