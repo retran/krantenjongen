@@ -1,15 +1,15 @@
-using Google.Cloud.Functions.Framework;
-using Microsoft.Extensions.Logging;
-using KrantenJongen.DTO;
-using Google.Cloud.Functions.Hosting;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Http;
 using System.Threading;
-using KrantenJongen.Services;
-using Google.Cloud.Tasks.V2;
-using Task = System.Threading.Tasks.Task;
 using Google.Cloud.BigQuery.V2;
+using Google.Cloud.Functions.Framework;
+using Google.Cloud.Functions.Hosting;
+using Google.Cloud.Tasks.V2;
+using KrantenJongen.DTO;
+using KrantenJongen.Services;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Task = System.Threading.Tasks.Task;
 
 namespace KrantenJongen.Functions;
 

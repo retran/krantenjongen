@@ -1,16 +1,16 @@
-using Google.Cloud.Tasks.V2;
+using System.Threading;
+using System.Threading.Tasks;
 using Google.Cloud.BigQuery.V2;
 using Google.Cloud.Functions.Framework;
 using Google.Cloud.Functions.Hosting;
 using Google.Cloud.SecretManager.V1;
+using Google.Cloud.Tasks.V2;
 using KrantenJongen.DTO;
 using KrantenJongen.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Threading;
-using System.Threading.Tasks;
 using Telegram.Bot;
 using Task = System.Threading.Tasks.Task;
 

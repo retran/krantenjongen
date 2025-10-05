@@ -1,9 +1,9 @@
-using Google.Cloud.BigQuery.V2;
-using KrantenJongen.DTO;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Google.Cloud.BigQuery.V2;
+using KrantenJongen.DTO;
+using Microsoft.Extensions.Logging;
 
 namespace KrantenJongen.Services;
 

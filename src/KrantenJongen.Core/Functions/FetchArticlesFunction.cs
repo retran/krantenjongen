@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using Google.Cloud.BigQuery.V2;
 using Google.Cloud.Functions.Framework;
 using Google.Cloud.Functions.Hosting;
@@ -8,8 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
 namespace KrantenJongen.Functions;
