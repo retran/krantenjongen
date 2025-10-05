@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using KrantenJongen.DTO;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
-using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
 namespace KrantenJongen.Services
